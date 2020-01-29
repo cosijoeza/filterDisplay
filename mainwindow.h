@@ -24,6 +24,8 @@ private slots:
 
     void on_addFilter_clicked();
 
+    void on_filter_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

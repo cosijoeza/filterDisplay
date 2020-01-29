@@ -2,11 +2,15 @@
 void getFilter(string ruta)
 {
     ifstream fin (ruta);
-    fin >> dimension;
+    fin >> dimension;   
     for (int i = 0; i < dimension; i++)
     {
         for (int j = 0; j < dimension; j++){
             fin >> filtro[i][j];
         }
     }
+}
+Mat addFilter(Mat img)
+{
+    return img;
 }
