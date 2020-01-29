@@ -32,10 +32,11 @@ public:
     QPushButton *clear;
     QLabel *picture_1;
     QPushButton *filter;
-    QLabel *label;
+    QLabel *picture_2;
     QPushButton *addFilter;
     QPushButton *close;
     QTableWidget *matrix;
+    QLabel *label_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -59,21 +60,25 @@ public:
         picture_1->setAlignment(Qt::AlignCenter);
         filter = new QPushButton(centralwidget);
         filter->setObjectName(QStringLiteral("filter"));
-        filter->setGeometry(QRect(680, 280, 280, 40));
-        label = new QLabel(centralwidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(370, 20, 281, 411));
-        label->setFrameShape(QFrame::Box);
-        label->setAlignment(Qt::AlignCenter);
+        filter->setGeometry(QRect(680, 300, 280, 40));
+        picture_2 = new QLabel(centralwidget);
+        picture_2->setObjectName(QStringLiteral("picture_2"));
+        picture_2->setGeometry(QRect(370, 20, 281, 411));
+        picture_2->setFrameShape(QFrame::Box);
+        picture_2->setAlignment(Qt::AlignCenter);
         addFilter = new QPushButton(centralwidget);
         addFilter->setObjectName(QStringLiteral("addFilter"));
-        addFilter->setGeometry(QRect(680, 230, 280, 40));
+        addFilter->setGeometry(QRect(680, 250, 280, 40));
         close = new QPushButton(centralwidget);
         close->setObjectName(QStringLiteral("close"));
         close->setGeometry(QRect(860, 460, 100, 40));
         matrix = new QTableWidget(centralwidget);
         matrix->setObjectName(QStringLiteral("matrix"));
-        matrix->setGeometry(QRect(690, 20, 256, 192));
+        matrix->setGeometry(QRect(680, 40, 280, 190));
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(780, 20, 67, 17));
+        label_2->setAlignment(Qt::AlignCenter);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
@@ -95,9 +100,10 @@ public:
         clear->setText(QApplication::translate("MainWindow", "Limpiar", Q_NULLPTR));
         picture_1->setText(QApplication::translate("MainWindow", "Original", Q_NULLPTR));
         filter->setText(QApplication::translate("MainWindow", "Aplicar filtro", Q_NULLPTR));
-        label->setText(QApplication::translate("MainWindow", "Resultado", Q_NULLPTR));
+        picture_2->setText(QApplication::translate("MainWindow", "Resultado", Q_NULLPTR));
         addFilter->setText(QApplication::translate("MainWindow", "Agregar filtro", Q_NULLPTR));
         close->setText(QApplication::translate("MainWindow", "cerrar", Q_NULLPTR));
+        label_2->setText(QApplication::translate("MainWindow", "Filtro", Q_NULLPTR));
     } // retranslateUi
 
 };

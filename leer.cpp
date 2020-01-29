@@ -13,7 +13,6 @@ int main()
     {
         for (int j = 0; j < tam; j++){  
             cout << filtro[i][j];
-
         }
         cout << "\n";
     }
