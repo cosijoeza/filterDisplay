@@ -10,13 +10,16 @@
 #include <QDebug>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#define length(x) (sizeof(x)/sizeof(x[0]))
 
 using namespace std;
 using namespace cv;
 
 Mat img;
+Mat img_gray;
 int filtro[7][7];
 int dimension = 0;
+bool existe_img = false;
 
 #include "functions.h" 
 
@@ -28,7 +31,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-//ABRIR IMAGEN
+//ABRIR IMAGEN 
 void MainWindow::on_open_clicked()
 {
     QFile file;
@@ -45,6 +48,10 @@ void MainWindow::on_open_clicked()
     
     //Lectura de imagen RGB 
     img = imread(picture_path, CV_LOAD_IMAGE_COLOR);
+    img_gray = imread(picture_path,0);
+    string nameBN = "img/byn.jpg"; 
+    imwrite(nameBN,img_gray);
+
     if(!file.isOpen() || ! img.data )
     {
         QMessageBox::critical(this,"Error","No se pudo abrir archivo");
@@ -61,8 +68,19 @@ void MainWindow::on_open_clicked()
     int h = ui->picture_1->height();
     ui->picture_1->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
     ui->picture_1->setFrameShape(QFrame::NoFrame);
+
+    //Renderizar imagen en interfaz
+    QString qnameBN = nameBN.c_str();
+    QPixmap pix1(qnameBN);
+    w = ui->picture_3->width();
+    h = ui->picture_3->height();
+    ui->picture_3->setPixmap(pix1.scaled(w,h,Qt::KeepAspectRatio));
+    ui->picture_3->setFrameShape(QFrame::NoFrame);
+
+    //Se cargo una imagen
+    existe_img = true;
 }
-//CERRAR VENTANA
+//CERRAR VENTANA 
 void MainWindow::on_close_clicked()
 {
     this -> close();
@@ -72,13 +90,23 @@ void MainWindow::on_clear_clicked()
 {
     ui->picture_1->clear();
     ui->picture_1->setFrameShape(QFrame::Box);
-    ui->picture_1->setText("Original");
+    ui->picture_1->setText("Original RGB");
     
     ui->picture_2->clear();
     ui->picture_2->setFrameShape(QFrame::Box);
     ui->picture_2->setText("Resultado");
+
+    ui->picture_3->clear();
+    ui->picture_3->setFrameShape(QFrame::Box);
+    ui->picture_3->setText("Original blanco y negro");
+    
+    ui->picture_4->clear();
+    ui->picture_4->setFrameShape(QFrame::Box);
+    ui->picture_4->setText("Resultado");
+
+    existe_img = false;
 }
-//LEER FILTRO DE UN ARCHIVO
+//LEER FILTRO DE UN ARCHIVO 
 void MainWindow::on_addFilter_clicked()
 {
     QFile file;
@@ -102,13 +130,13 @@ void MainWindow::on_addFilter_clicked()
         return;
     }
 
-    //Cerrar archivo
+    //Cerrar archivo 
     io.setDevice(&file);
     file.flush();
     file.close();
 
     //Datos de archivo a matriz FILTRO[][]
-    getFilter(file_path);
+    getFilter(file_path); 
 
     //Limpiar la tabla
     for(int i= ui->matrix->rowCount() - 1; i >= 0; i--)
@@ -125,32 +153,49 @@ void MainWindow::on_addFilter_clicked()
         fila = ui->matrix->rowCount() - 1;
         for(int j = 0; j < columnas;j++)
             ui->matrix->setItem(fila,j,new QTableWidgetItem(QString::number(filtro[i][j])));
-    }
+    } 
 }
 
 //APLICAR FILTRO A IMAGEN
 void MainWindow::on_filter_clicked()
 {
+    //Verificar que haya sido cargada una imagen
+    if(!existe_img)
+    {
+        QMessageBox::critical(this,"Error","Debes cargar una imagen");
+        return;   
+    }
     //Verificar que un filtro ya haya sido cargado
-    //Si la tabla no tiene rengloes entonces no ha sido cargado un filtro
+    //Si la tabla no tiene renglones entonces no ha sido cargado un filtro
     if(ui->matrix->rowCount() - 1 < 0)
     {
         QMessageBox::critical(this,"Error","Agregar filtro");
         return;   
     }
 
-    Mat resultado;
-    string name = "resultado.png";
-    QString qName = name.c_str();
-    
-    //Aplicar filtro
-    resultado = addFilter(img);
-    imwrite(name,resultado);
+    Mat resultadoBN,resultadoRGB;
 
-    //Rendirizar resultado en interfaz
+    string name = "img/resultadoBN.png";
+    QString qName = name.c_str();
+    //Aplicar filtro  BLANCO Y NEGRO
+    resultadoBN = addFilter(img_gray);
+    imwrite(name,resultadoBN);
+    //Rendirizar resultadoBN en interfaz 
     QPixmap pix(qName);
-    int w = ui->picture_2->width();
-    int h = ui->picture_2->height();
-    ui->picture_2->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
+    int w = ui->picture_4->width();
+    int h = ui->picture_4->height();
+    ui->picture_4->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
+    ui->picture_4->setFrameShape(QFrame::NoFrame);
+
+    name = "img/resultadoRGB.png";
+    qName = name.c_str();
+    //Aplicar filtro  RGB
+    resultadoRGB = addFilterRGB(img);
+    imwrite(name,resultadoRGB);
+    //Rendirizar resultadoRGB en interfaz 
+    QPixmap pix1(qName);
+    w = ui->picture_2->width();
+    h = ui->picture_2->height();
+    ui->picture_2->setPixmap(pix1.scaled(w,h,Qt::KeepAspectRatio));
     ui->picture_2->setFrameShape(QFrame::NoFrame);
 }

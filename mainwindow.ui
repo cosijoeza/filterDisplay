@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>986</width>
-    <height>602</height>
+    <width>1052</width>
+    <height>995</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,24 +17,38 @@
    <widget class="QPushButton" name="open">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>460</y>
-      <width>100</width>
+      <x>30</x>
+      <y>400</y>
+      <width>150</width>
       <height>40</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="text">
-     <string>Abrir</string>
+     <string>Abrir imagen</string>
     </property>
    </widget>
    <widget class="QPushButton" name="clear">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>460</y>
-      <width>100</width>
+      <x>200</x>
+      <y>400</y>
+      <width>150</width>
       <height>40</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Limpiar</string>
@@ -43,17 +57,25 @@
    <widget class="QLabel" name="picture_1">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>380</x>
       <y>20</y>
       <width>281</width>
       <height>411</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="frameShape">
      <enum>QFrame::Box</enum>
     </property>
     <property name="text">
-     <string>Original</string>
+     <string>Original RGB</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -62,11 +84,18 @@
    <widget class="QPushButton" name="filter">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>300</y>
-      <width>280</width>
+      <x>30</x>
+      <y>320</y>
+      <width>320</width>
       <height>40</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Aplicar filtro</string>
@@ -75,11 +104,19 @@
    <widget class="QLabel" name="picture_2">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>710</x>
       <y>20</y>
       <width>281</width>
       <height>411</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="frameShape">
      <enum>QFrame::Box</enum>
@@ -94,11 +131,18 @@
    <widget class="QPushButton" name="addFilter">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>250</y>
-      <width>280</width>
+      <x>30</x>
+      <y>270</y>
+      <width>320</width>
       <height>40</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Agregar filtro</string>
@@ -107,11 +151,18 @@
    <widget class="QPushButton" name="close">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>460</y>
+      <x>891</x>
+      <y>900</y>
       <width>100</width>
       <height>40</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>cerrar</string>
@@ -120,24 +171,89 @@
    <widget class="QTableWidget" name="matrix">
     <property name="geometry">
      <rect>
-      <x>680</x>
+      <x>30</x>
       <y>40</y>
-      <width>280</width>
-      <height>190</height>
+      <width>320</width>
+      <height>210</height>
      </rect>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>780</x>
+      <x>130</x>
       <y>20</y>
       <width>67</width>
       <height>17</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="text">
      <string>Filtro</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="picture_3">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>470</y>
+      <width>281</width>
+      <height>411</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="text">
+     <string>Original blanco y negro</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="picture_4">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>470</y>
+      <width>281</width>
+      <height>411</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string>Resultado</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -149,7 +265,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>986</width>
+     <width>1052</width>
      <height>22</height>
     </rect>
    </property>
