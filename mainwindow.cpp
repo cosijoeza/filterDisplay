@@ -10,7 +10,6 @@
 #include <QDebug>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#define length(x) (sizeof(x)/sizeof(x[0]))
 
 using namespace std;
 using namespace cv;
@@ -31,7 +30,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-//ABRIR IMAGEN as
+//ABRIR IMAGEN
 void MainWindow::on_open_clicked()
 {
     QFile file;
