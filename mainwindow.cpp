@@ -62,7 +62,7 @@ void MainWindow::on_open_clicked()
     file.flush();
     file.close();
 
-    //Renderizar imagen en la interfaz
+    //Renderizar imagen a interfaz
     QPixmap pix(file_name);
     int w = ui->picture_1->width();
     int h = ui->picture_1->height();
