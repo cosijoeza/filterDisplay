@@ -31,7 +31,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-//ABRIR IMAGEN 
+//ABRIR IMAGEN as
 void MainWindow::on_open_clicked()
 {
     QFile file;
