@@ -31,7 +31,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-//ABRIR IMAGEN 
+//ABRIR IMAGEN as
 void MainWindow::on_open_clicked()
 {
     QFile file;
@@ -62,7 +62,7 @@ void MainWindow::on_open_clicked()
     file.flush();
     file.close();
 
-    //Renderizar imagen a interfaz
+    //Renderizar imagen en interfaz
     QPixmap pix(file_name);
     int w = ui->picture_1->width();
     int h = ui->picture_1->height();
