@@ -4,3 +4,6 @@
 3 11 17 11 3
 2 7 11 7 1
 1 2 3 2 1
+GAUSS
+Este tipo de filtro reduce especialmente el ruido tipo gaussiano. Ruido gaussiano: Produce pequeñas variaciones en la imagen, tiene su origen en diferencias de ganancias del sensor, ruido en la digitalización, etc. $
+

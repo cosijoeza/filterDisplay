@@ -39,6 +39,8 @@ public:
     QLabel *label_2;
     QLabel *picture_3;
     QLabel *picture_4;
+    QLabel *title;
+    QLabel *description;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -46,6 +48,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
+        MainWindow->setEnabled(true);
         MainWindow->resize(1610, 1041);
         MainWindow->setStyleSheet(QLatin1String("QPushButton\n"
 "{\n"
@@ -151,7 +154,7 @@ public:
         palette1.setBrush(QPalette::Active, QPalette::ButtonText, brush);
         palette1.setBrush(QPalette::Active, QPalette::Base, brush4);
         palette1.setBrush(QPalette::Active, QPalette::Window, brush4);
-        QBrush brush5(QColor(0, 0, 0, 128));
+        QBrush brush5(QColor(255, 255, 255, 128));
         brush5.setStyle(Qt::NoBrush);
         palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette1.setBrush(QPalette::Inactive, QPalette::Button, brush4);
@@ -167,7 +170,7 @@ public:
         palette1.setBrush(QPalette::Disabled, QPalette::ButtonText, brush);
         palette1.setBrush(QPalette::Disabled, QPalette::Base, brush4);
         palette1.setBrush(QPalette::Disabled, QPalette::Window, brush4);
-        QBrush brush7(QColor(0, 0, 0, 128));
+        QBrush brush7(QColor(255, 255, 255, 128));
         brush7.setStyle(Qt::NoBrush);
         close->setPalette(palette1);
         close->setFont(font);
@@ -193,6 +196,17 @@ public:
         picture_4->setFont(font1);
         picture_4->setFrameShape(QFrame::Box);
         picture_4->setAlignment(Qt::AlignCenter);
+        title = new QLabel(centralwidget);
+        title->setObjectName(QStringLiteral("title"));
+        title->setGeometry(QRect(950, 650, 300, 31));
+        title->setFont(font1);
+        description = new QLabel(centralwidget);
+        description->setObjectName(QStringLiteral("description"));
+        description->setGeometry(QRect(950, 710, 450, 200));
+        QFont font2;
+        font2.setPointSize(12);
+        description->setFont(font2);
+        description->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
@@ -217,9 +231,11 @@ public:
         picture_2->setText(QApplication::translate("MainWindow", "Resultado", Q_NULLPTR));
         addFilter->setText(QApplication::translate("MainWindow", "Agregar filtro", Q_NULLPTR));
         close->setText(QApplication::translate("MainWindow", "cerrar", Q_NULLPTR));
-        label_2->setText(QApplication::translate("MainWindow", "Filtro", Q_NULLPTR));
+        label_2->setText(QApplication::translate("MainWindow", "Filtro:", Q_NULLPTR));
         picture_3->setText(QApplication::translate("MainWindow", "Original blanco y negro", Q_NULLPTR));
         picture_4->setText(QApplication::translate("MainWindow", "Resultado", Q_NULLPTR));
+        title->setText(QApplication::translate("MainWindow", "Nombre", Q_NULLPTR));
+        description->setText(QApplication::translate("MainWindow", "Descripci\303\263n", Q_NULLPTR));
     } // retranslateUi
 
 };

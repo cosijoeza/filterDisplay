@@ -2,3 +2,5 @@
 1 -2 1
 -2 5 -2
 1 -2 1
+SHARPEN
+EL filtro de tipo Sharpen realza los detalles finos de una imagen, es decir, si tenemos una imagen borrosa de entrada, lo que se busca es realzar los detalles finos que no se aprecian si no hasta el realze. $

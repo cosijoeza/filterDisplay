@@ -2,3 +2,5 @@
 0 -1 0
 -1 5 -1
 0 -1 0
+ENFOQUE
+El filtro de enfoque mejora la definición de los bordes de una imagen aumentando el contraste a lo largo de los bordes de la misma. $

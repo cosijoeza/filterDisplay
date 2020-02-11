@@ -2,3 +2,5 @@
 -2 -1 0
 -1 1 1
 0 1 2
+REPUJADO
+Este filtro estampa y esculpe la capa o selección activa, dando relieve con protuberancias y huecos. Las áreas claras se alzan y las oscuras se esculpen. Puede regular la iluminación. $
