@@ -2,3 +2,5 @@
 0 0 0
 -1 1 0
 0 0 0
+REALCE_BORDES
+El objetivo de los filtros de realce de bordes es resaltar aquellas características de la imagen que por causa del mecanismo de captación o por error hayan quedados emborronados en la imagen. $

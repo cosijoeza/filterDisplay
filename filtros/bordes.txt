@@ -1,4 +1,7 @@
 3
 0 1 0 
 1 -4 1 
-0 1 0 
+0 1 0
+BORDES
+Detectar aquellos píxeles donde se produce un cambio brusco en la función intensidad. $
+

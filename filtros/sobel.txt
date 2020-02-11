@@ -2,3 +2,5 @@
 -1 0 1
 -2 0 2
 -1 0 1
+SOBEL
+Además de estimar el valor del módulo del gradiente, producen un alisamiento en la imagen que es beneficioso, dado el comportamiento ruidoso que presentan las estimaciones basadas en derivadas. $

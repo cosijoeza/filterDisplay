@@ -1,14 +1,50 @@
+bool istxt(string ruta)
+{
+	bool bandera = false;
+	string extension = "";
+	int lag = ruta.size(); 
+	for(int i=0; i < lag;i++)
+	{
+		if(bandera)
+			extension += ruta[i];
+		if(ruta[i] == '.')
+			bandera = true;
+	}
+	if(extension != "txt")
+		return false;
+	qDebug() << "Es archivo txt";
+	return true;
+}
 //Lee los datos de un archivo y los pone en la matriz global aux
 void getFilter(string ruta)
 {
-    ifstream fin (ruta);
+	int i = 0;
+	string aux;
+	ifstream fin (ruta);
     fin >> dimension;   
-    for (int i = 0; i < dimension; i++)
+    //Lee datos de filtro
+	for (int i = 0; i < dimension; i++)
     {
         for (int j = 0; j < dimension; j++){
             fin >> filtro[i][j];
         }
     }
+	qDebug() <<  "Titulo y descrip";
+	//Titulo y descripción del filtro
+	fin >> title;
+	qDebug() << title.c_str();
+	do
+	{
+		fin >> aux;
+		if(aux == "$")	//Fin de cadena
+			break;
+		description += aux;
+		i++;
+		if((i % 6) == 0)
+			description += "\n";
+		else
+			description += " ";
+	}while(1);
 }
 //Aplicar filtro a la IMAGEN BLANCO Y NEGRO
 Mat addFilter(Mat imgOri)

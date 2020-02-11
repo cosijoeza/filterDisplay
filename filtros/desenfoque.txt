@@ -2,3 +2,5 @@
 1 1 1
 1 1 1
 1 1 1
+DESENFOQUE
+Los filtros de desenfoque son utilizados para suavizar toda una imagen o sólo un área de la misma. $

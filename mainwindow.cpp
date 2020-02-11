@@ -19,6 +19,7 @@ Mat img_gray;
 int filtro[7][7];
 int dimension = 0;
 bool existe_img = false;
+string title="",description="";
 
 #include "functions.h" 
 
@@ -44,7 +45,11 @@ void MainWindow::on_open_clicked()
 
     //Ruta de archivo
     picture_path = file_name.toStdString();
-    
+    if(istxt(picture_path))
+    {
+        QMessageBox::critical(this,"Error","Debes ingresar imágenes");
+        return;
+    }
     //Lectura de imagen RGB 
     img = imread(picture_path, CV_LOAD_IMAGE_COLOR);
     img_gray = imread(picture_path,0);
@@ -75,6 +80,15 @@ void MainWindow::on_open_clicked()
     h = ui->picture_3->height();
     ui->picture_3->setPixmap(pix1.scaled(w,h,Qt::KeepAspectRatio));
     ui->picture_3->setFrameShape(QFrame::NoFrame);
+    
+    //Limpiar el resultado anterior
+    ui->picture_2->clear();
+    ui->picture_2->setFrameShape(QFrame::Box);
+    ui->picture_2->setText("Original blanco y negro");
+    
+    ui->picture_4->clear();
+    ui->picture_4->setFrameShape(QFrame::Box);
+    ui->picture_4->setText("Resultado");
 
     //Se cargo una imagen
     existe_img = true;
@@ -104,6 +118,13 @@ void MainWindow::on_clear_clicked()
     ui->picture_4->setText("Resultado");
 
     existe_img = false;
+
+    //Limpiar la tabla
+    for(int i= ui->matrix->rowCount() - 1; i >= 0; i--)
+    {
+        ui->matrix->removeRow(i);
+        ui->matrix->removeColumn(i);
+    }
 }
 //LEER FILTRO DE UN ARCHIVO 
 void MainWindow::on_addFilter_clicked()
@@ -134,9 +155,14 @@ void MainWindow::on_addFilter_clicked()
     file.flush();
     file.close();
 
+    if(!istxt(file_path))
+    {
+        QMessageBox::critical(this,"Error","No es un archivo .txt");
+        return;
+    }
     //Datos de archivo a matriz FILTRO[][]
     getFilter(file_path); 
-
+    qDebug() << "Leyo filtro con dimension: " << dimension;
     //Limpiar la tabla
     for(int i= ui->matrix->rowCount() - 1; i >= 0; i--)
         ui->matrix->removeRow(i);
@@ -152,7 +178,12 @@ void MainWindow::on_addFilter_clicked()
         fila = ui->matrix->rowCount() - 1;
         for(int j = 0; j < columnas;j++)
             ui->matrix->setItem(fila,j,new QTableWidgetItem(QString::number(filtro[i][j])));
-    } 
+    }
+
+    //Poner titulo y descripción en interfaz
+    ui->title->setText(title.c_str());
+    ui->description->setText(description.c_str());
+    description = "";
 }
 
 //APLICAR FILTRO A IMAGEN
@@ -197,4 +228,5 @@ void MainWindow::on_filter_clicked()
     h = ui->picture_2->height();
     ui->picture_2->setPixmap(pix1.scaled(w,h,Qt::KeepAspectRatio));
     ui->picture_2->setFrameShape(QFrame::NoFrame);
+
 }
